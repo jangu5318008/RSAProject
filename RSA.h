@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <climits>
+#include <cmath>
 using namespace std;
 
 class RSA
