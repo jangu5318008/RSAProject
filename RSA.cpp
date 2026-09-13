@@ -15,7 +15,8 @@ using namespace std;
     else if (x % 2 == 0) {
        return false;
     }
-    for (int i = 3; i < sqrt(x); i++) {
+    for (int i = 3; i < sqrt(x); i += 2) {
+        //i++ works but you don't need to check even numbers since they are not prime
         if (x % i == 0) {
             return false;
         }
