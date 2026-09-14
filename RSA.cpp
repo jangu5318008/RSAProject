@@ -15,14 +15,14 @@ using namespace std;
     else if (x % 2 == 0) {
        return false;
     }
-    for (int i = 3; i < sqrt(x); i += 2) {
+    for (unsigned long long i = 3; i < sqrt(x) + 2; i += 2) {
         //i++ works but you don't need to check even numbers since they are not prime
         if (x % i == 0) {
-            return false;
+            return false; 
         }
         }
     return true;
-    }
+}
 
 
 
@@ -35,7 +35,7 @@ using namespace std;
 
    }
         return randomNum;
-   }
+}
 
 
 
@@ -49,20 +49,20 @@ using namespace std;
     }
 
 
- unsigned long long RSA::lcm(unsigned long long x, unsigned long long y) {
+unsigned long long RSA::lcm(unsigned long long x, unsigned long long y) {
     return (x * y) / gcd(x, y);
- }
-
-
- unsigned long long RSA::modInverse(unsigned long long e, unsigned long long lam) {
-
-for (unsigned long long d = 1; d < lam; d++) {
-    if ((e * d) % lam == 1) {
-        return d;
-    }
 }
+
+
+unsigned long long RSA::modInverse(unsigned long long e, unsigned long long lam) {
+
+    for (unsigned long long d = 1; d < lam; d++) {
+        if ((e * d) % lam == 1) {
+            return d;
+        }
+    }
     return 0;
- }
+}
 
 
  
@@ -76,7 +76,7 @@ unsigned long long RSA::modExp(unsigned long long base, unsigned long long exp, 
 }
 
 
- void RSA::init(unsigned long long seed) {
+void RSA::init(unsigned long long seed) {
     srand(seed);
 
     p = getPrime(UCHAR_MAX, USHRT_MAX);
@@ -98,17 +98,17 @@ unsigned long long RSA::modExp(unsigned long long base, unsigned long long exp, 
         cout << d << endl;
         cout << "Public key: " << n << " " << e << endl; 
         cout << "Private key: " << n << " " << d << endl;
- }
+}
 
 
- unsigned long long RSA::encipher(unsigned long long m) {
+unsigned long long RSA::encipher(unsigned long long m) {
    return modExp(m, e, n);
- }
+}
 
 
- unsigned long long RSA::decipher(unsigned long long c) {
+unsigned long long RSA::decipher(unsigned long long c) {
 
     return modExp(c, d, n); 
- }
+}
 
 
